@@ -8,53 +8,75 @@ var $deleteButton = $('.delete-button');
 var $upVoteButton = $('.up-vote');
 var $downVoteButton = $('.down-vote');
 
-var $quality = $('')
+// var $quality = $('')
 var ideaCounter = 0;
 //event listeners 
-$saveInputButton.on('click', addIdeaToList);
+$titleInput.on('keyup', function() {
+  
 
-
-$('ul').on('click', '.idea article .up-vote', function() {
-  if ($(this).hasClass('swill')) {
-  $(this).removeClass('swill');
-  $(this).addClass('plausible')
-  $('.quality').text('Quality: Plausible');
-  } else {
-         ($(this).hasClass('plausible')) 
-         $(this).removeClass('plausible');
-         $(this).addClass('genius')
-         $('.quality').text('Quality: Genius');
-  } 
+$saveInputButton.on('click', function() {
+  addIdeaToList();
+  clearInputFields();
 });
 
-$('ul').on('click', '.idea article .down-vote', function() {
-  if ($(this).hasClass('genius')) {
-  $(this).closest('genius').removeClass();
-  $(this).closest('plausible').remove();
-  $('.quality').closest('Quality: Plausible').text();
-  } else {
-         ($(this).hasClass('plausible')) 
-         $(this).removeClass('plausible');
-         $(this).addClass('swill')
-         $('.quality').text('Quality: swill');
-  } 
-});
+
+// $('ul').on('click', '.idea article .up-vote', function() {
+//   if ($(this).hasClass('swill')) {
+//   $(this).removeClass('swill');
+//   $(this).addClass('plausible')
+//   $('.quality').text('Quality: Plausible');
+//   } else {
+//          ($(this).hasClass('plausible')) 
+//          $(this).removeClass('plausible');
+//          $(this).addClass('genius')
+//          $('.quality').text('Quality: Genius');
+//   } 
+// });
+
+// $('ul').on('click', '.idea article .down-vote', function() {
+//   if ($(this).hasClass('genius')) {
+//   $(this).closest('genius').removeClass();
+//   $(this).closest('plausible').remove();
+//   $('.quality').closest('Quality: Plausible').text();
+//   } else {
+//          ($(this).hasClass('plausible')) 
+//          $(this).removeClass('plausible');
+//          $(this).addClass('swill')
+//          $('.quality').text('Quality: swill');
+//   } 
+// });
 
 //functions
-function Idea(title, body, id) {
+function toggleSubmitButton () {
+  if ($titleInput.val() === ('') && $bodyInput.val() ===('')) {
+    saveInputButton.attr('disabled', true);
+  } else if ($titleInput.val() !== ('') && $bodyInput.val() !==('')) {
+    saveInputButton.attr('disabled', false);
+  } 
+};
+
+
+function clearInputFields() {
+  $titleInput.val('');
+  $bodyInput.val('');
+  $saveInputButton.attr('disabled', true);
+};
+
+function Idea(title, body, id, quality) {
   this.title = title,
   this.body = body,
-  this.id = id
-}
+  this.id = id,
+  this.quality = quality || ('swill');
+};
 
 function addIdeaToList(e) {
+// e.preventDefault();
 ideaCounter++
 var newIdea = new Idea($titleInput.val(), $bodyInput.val()  , ideaCounter)
-  e.preventDefault();
 console.log(ideaCounter);
 console.log(newIdea);
 $("ul").append(newIdea.toHtml());
-}
+};
 
 Idea.prototype.toHtml = function(){
  return (`
@@ -65,12 +87,29 @@ Idea.prototype.toHtml = function(){
           <p class="body">${this.body}</p>
           <button class="up-vote swill" aria-label='Up Vote Button'>U</button>
           <button class="down-vote swill" aria-label='Down Vote Button'>D</button>
-          <p class="quality">Quality: swill</p>
+          <h4 class="quality">Quality:<span class="change-quality">${this.quality}</span> </h4>
         </article>
       </li>
     `);
 };
 
+Idea.prototype.upVoteButton = function() {
+  var quality = this.quality;
+  if (quality === 'swill') {
+    this.quality = 'plausible';
+  } else if (quality === 'plausible') {
+    this.quality = 'genius';
+  }
+};
+
+Idea.prototype.downVoteButton = function() {
+  var quality = this.quality;
+  if (quality === 'genius') {
+    this.quality = 'plausible';
+  } else if (quality === 'plausible') {
+    this.quality = 'swill';
+  }
+};
 
 // $("ul").append(`<li id="${ideaCounter}" class="idea">
 //         <article>
