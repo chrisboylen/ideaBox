@@ -1,0 +1,42 @@
+body {
+
+}
+.top {
+  background-color: #e5f3f2;
+}
+
+.bottom {
+    background-color: lightgray;
+}
+
+/*header and input styles*/
+
+header {
+  text-align: center;
+}
+
+fieldset {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  border: 0px;
+}
+
+input {
+  width: 100%;
+}
+
+.save-button {
+  text-align: center;
+  width: 100%;
+}
+
+ul {
+  margin: auto;
+  width: 50%;
+  list-style-type: none;
+}
+
+article {
+  width: 100%;
+}
