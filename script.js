@@ -12,8 +12,13 @@ var $downVoteButton = $('.down-vote');
 var ideaCounter = 0;
 //event listeners 
 $titleInput.on('keyup', function() {
-  
+  toggleSubmitButton();
+});
 
+$bodyInput.on('keyup', function() {
+  toggleSubmitButton();
+});
+  
 $saveInputButton.on('click', function() {
   addIdeaToList();
   clearInputFields();
