@@ -20,7 +20,6 @@ function Idea(title, body, id) {
   this.title = title,
   this.body = body,
   this.id = id
-  // this.quality =
 }
 
 console.log(ideaCounter);
@@ -30,26 +29,29 @@ console.log(coolstuff);
 
 $('ul').on('click', '.idea article .up-vote', function() {
   if ($(this).hasClass('swill')) {
-  $(this).toggleClass('plausible');
+  $(this).removeClass('swill');
+  $(this).addClass('plausible')
   $('.quality').text('Quality: Plausible');
   } else {
          ($(this).hasClass('plausible')) 
-         $(this).toggleClass('genius');
+         $(this).removeClass('plausible');
+         $(this).addClass('genius')
          $('.quality').text('Quality: Genius');
   } 
 });
 
-// $('ul').on('click', '.idea article .down-vote', function() {
-//   if ((this).className === 'down-vote') {
-//   $(this).toggleClass('plausible');
-//   $('.quality').text('Quality: Plausible');
-  
-//   } else {
-//   $(this).toggleClass('swill');
-//   $('.quality').text('Quality: swill');
-//     }
-// })
-
+$('ul').on('click', '.idea article .down-vote', function() {
+  if ($(this).hasClass('genius')) {
+  $(this).removeClass('genius');
+  $(this).addClass('plausible')
+  $('.quality').text('Quality: Plausible');
+  } else {
+         ($(this).hasClass('plausible')) 
+         $(this).removeClass('plausible');
+         $(this).addClass('swill')
+         $('.quality').text('Quality: swill');
+  } 
+});
 
 
 
