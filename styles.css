@@ -1,4 +1,5 @@
 body {
+  box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
   color: #6d6e71;
 }
@@ -17,7 +18,9 @@ header {
   font-family: 'Roboto Slab', serif;
   text-align: center;
 }
-
+.header-green {
+  color: #00a79d;
+}
 fieldset {
   width: 50%;
   margin: auto;
