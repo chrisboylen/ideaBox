@@ -1,5 +1,6 @@
 body {
-
+  font-family: 'Open Sans', sans-serif;
+  color: #6d6e71;
 }
 .top {
   background-color: #e5f3f2;
@@ -12,6 +13,8 @@ body {
 /*header and input styles*/
 
 header {
+  font-size: 70px;
+  font-family: 'Roboto Slab', serif;
   text-align: center;
 }
 
@@ -23,14 +26,23 @@ fieldset {
 }
 
 input {
+  font-size: 90%;
+  margin: 8px;
+  height: 25px;
   width: 100%;
+  border: 2px solid #d1d3d4;
 }
 
 .save-button {
+  background-color: #00a79d;
   text-align: center;
+  margin: 8px;
+  height: 35px;
   width: 100%;
+  border: 0;
+  color: #FFFFFF;
 }
-
+/*idea list styles*/
 ul {
   margin: auto;
   width: 50%;
@@ -38,5 +50,5 @@ ul {
 }
 
 article {
-  width: 100%;
+
 }
