@@ -52,6 +52,16 @@ ul {
   list-style-type: none;
 }
 
-article {
 
+
+.plausible {
+  color: blue;
+}
+
+.swill {
+  color: red;
+}
+
+.genius {
+  color: green;
 }
