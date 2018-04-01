@@ -146,5 +146,10 @@ li {
   background-image: url("images/delete-hover.svg");
 }
 
+@media screen and (max-width: 900px) {
+  body {
+    background: yellow;
+  }
+}
 
 
