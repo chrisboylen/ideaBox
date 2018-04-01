@@ -60,12 +60,12 @@ Idea.prototype.toHtml = function(){
  return (`
     <li id="${this.id}" class="idea">
         <article>
+          <button class='delete-button'></button>
           <h1 class="title">${this.title}</h1>
-          <button class='delete-button'>X</button>
           <p class="body">${this.body}</p>
-          <button class="up-vote swill">U</button>
-          <button class="down-vote swill">D</button>
-          <p class="quality">Quality: swill</p>
+          <button class="up-vote swill"></button>
+          <button class="down-vote swill"></button>
+          <p class="quality"><span class="quality-serif">quality:</span> swill</p>
         </article>
       </li>
     `);
