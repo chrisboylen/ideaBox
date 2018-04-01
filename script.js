@@ -11,21 +11,40 @@ var $downVoteButton = $('.down-vote');
 // var $quality = $('')
 var ideaCounter = 0;
 //event listeners 
-$titleInput.on('keyup', function() {
+$titleInput.on('keyup', function(e) {
+  // e.preventDefault();
   toggleSubmitButton();
 });
 
-$bodyInput.on('keyup', function() {
+$bodyInput.on('keyup', function(e) {
+  // e.preventDefault();
   toggleSubmitButton();
 });
   
-$saveInputButton.on('click', function() {
+$saveInputButton.on('click', function(e) {
   addIdeaToList();
+  toggleSubmitButton();
   clearInputFields();
 });
 
 
-// $('ul').on('click', '.idea article .up-vote', function() {
+
+$('ul').on('click', '.idea article .up-vote', function() {
+    if (.quality).text('swill') {
+      quality.text('plausible');
+    } else if (quality.text('plausible') {
+      quality.text('genius');
+    }
+  });
+
+$('ul').on('click', '.idea article .down-vote', function() {
+  var quality = ('.quality').text();
+  if (quality === 'genius') {
+    quality = 'plausible';
+  } else if (quality === 'plausible') {
+    quality = 'swill';
+  }
+});
 //   if ($(this).hasClass('swill')) {
 //   $(this).removeClass('swill');
 //   $(this).addClass('plausible')
@@ -50,21 +69,36 @@ $saveInputButton.on('click', function() {
 //          $('.quality').text('Quality: swill');
 //   } 
 // });
+// Idea.prototype.upVote = function() {
+//   var quality = this.quality;
+//   if (quality === 'swill') {
+//     this.quality = 'plausible';
+//   } else if (quality === 'plausible') {
+//     this.quality = 'genius';
+//   }
+// };
+
+// Idea.prototype.downVote = function() {
+//   var quality = this.quality;
+//   if (quality === 'genius') {
+//     this.quality = 'plausible';
+//   } else if (quality === 'plausible') {
+//     this.quality = 'swill';
+//   }
+// };
 
 //functions
 function toggleSubmitButton () {
   if ($titleInput.val() === ('') && $bodyInput.val() ===('')) {
-    saveInputButton.attr('disabled', true);
+    $saveInputButton.attr('disabled', true);
   } else if ($titleInput.val() !== ('') && $bodyInput.val() !==('')) {
-    saveInputButton.attr('disabled', false);
+    $saveInputButton.attr('disabled', false);
   } 
 };
-
 
 function clearInputFields() {
   $titleInput.val('');
   $bodyInput.val('');
-  $saveInputButton.attr('disabled', true);
 };
 
 function Idea(title, body, id, quality) {
@@ -77,7 +111,7 @@ function Idea(title, body, id, quality) {
 function addIdeaToList(e) {
 // e.preventDefault();
 ideaCounter++
-var newIdea = new Idea($titleInput.val(), $bodyInput.val()  , ideaCounter)
+var newIdea = new Idea($titleInput.val(), $bodyInput.val(), ideaCounter)
 console.log(ideaCounter);
 console.log(newIdea);
 $("ul").append(newIdea.toHtml());
@@ -92,29 +126,13 @@ Idea.prototype.toHtml = function(){
           <p class="body">${this.body}</p>
           <button class="up-vote swill" aria-label='Up Vote Button'>U</button>
           <button class="down-vote swill" aria-label='Down Vote Button'>D</button>
-          <h4 class="quality">Quality:<span class="change-quality">${this.quality}</span> </h4>
+          <h4 class="quality">Quality: <span class="change-quality">${this.quality}</span> </h4>
         </article>
       </li>
     `);
 };
 
-Idea.prototype.upVoteButton = function() {
-  var quality = this.quality;
-  if (quality === 'swill') {
-    this.quality = 'plausible';
-  } else if (quality === 'plausible') {
-    this.quality = 'genius';
-  }
-};
 
-Idea.prototype.downVoteButton = function() {
-  var quality = this.quality;
-  if (quality === 'genius') {
-    this.quality = 'plausible';
-  } else if (quality === 'plausible') {
-    this.quality = 'swill';
-  }
-};
 
 // $("ul").append(`<li id="${ideaCounter}" class="idea">
 //         <article>
