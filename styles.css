@@ -1,4 +1,9 @@
+* {
+box-sizing: border-box;
+}
+
 body {
+  margin: auto;
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
   color: #6d6e71;
@@ -7,61 +12,139 @@ body {
   background-color: #e5f3f2;
 }
 
-.bottom {
-    background-color: lightgray;
-}
-
-/*header and input styles*/
-
+/*header styles*/
 header {
   font-size: 70px;
   font-family: 'Roboto Slab', serif;
   text-align: center;
 }
+
 .header-green {
   color: #00a79d;
 }
+
+h1 {
+  font-family: 'Roboto Slab', serif;
+  color: #6d6e71;
+}
+/*input field styles*/
 fieldset {
-  width: 50%;
   margin: auto;
-  text-align: center;
+  width: 50%;
   border: 0px;
 }
 
 input {
+  font-family: 'Open Sans', sans-serif;
   font-size: 90%;
-  margin: 8px;
-  height: 25px;
+  padding: 5px;
+  margin: 8px auto;
+  height: 35px;
   width: 100%;
   border: 2px solid #d1d3d4;
+  outline: none;
 }
 
+input::placeholder {
+  color: #d1d3d4;
+}
+
+/*button styles*/
 .save-button {
   background-color: #00a79d;
   text-align: center;
-  margin: 8px;
+  margin: 8px auto;
   height: 35px;
   width: 100%;
   border: 0;
   color: #FFFFFF;
+  outline: none;
 }
-/*idea list styles*/
+
+/*idea card styles*/
+article {
+  height: 170px;
+  color: #939598;
+  border-bottom: 2px solid #d1d3d4;
+}
+
 ul {
-  margin: auto;
-  width: 50%;
+  padding-left: 0;
+  margin: 0 auto;
+  width: 48%;
   list-style-type: none;
 }
 
-
-
-.plausible {
-  color: blue;
+li {
+  margin: auto;
 }
 
+.quality-serif {
+  font-family: 'Roboto Slab', serif;
+}
+/*vote buttons*/
+
 .swill {
-  color: red;
+  margin: 5px;
+  outline: none;
+}
+
+.plausible {
+  margin: 5px;
+  outline: none;
 }
 
 .genius {
-  color: green;
+  margin: 5px;
+  outline: none;
 }
+.quality {
+  color: #6d6e71;
+  position: relative;
+  bottom: 45px;
+  left: 85px;
+}
+.up-vote {
+  background-image: url("images/upvote.svg");
+  background-repeat: no-repeat;
+  background-position: center; 
+  border: none;
+  width: 25px;
+  height: 25px;
+  }
+
+.up-vote:hover {
+  background-image: url("images/upvote-hover.svg");
+  }
+
+.down-vote {
+  background-image: url("images/downvote.svg");
+  background-repeat: no-repeat;
+  background-position: center; 
+  border: none;
+  width: 25px;
+  height: 25px;
+}
+
+.down-vote:hover {
+  background-image: url("images/downvote-hover.svg");
+}
+
+.delete-button {
+  position: relative;
+  left: 95%;
+  top: 47px;
+  background-image: url("images/delete.svg");
+  background-repeat: no-repeat;
+  background-position: center; 
+  border: none;
+  width: 25px;
+  height: 25px;
+}
+
+.delete-button:hover {
+  background-image: url("images/delete-hover.svg");
+}
+
+
+
