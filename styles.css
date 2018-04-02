@@ -62,13 +62,25 @@ input::placeholder {
 }
 
 /*idea card styles*/
-article {
+.article {
   height: 170px;
   color: #939598;
-  border-bottom: 2px solid #d1d3d4;
+  border-bottom: 1px solid #d1d3d4;
 }
 
-ul {
+.article-genius {
+  height: 170px;
+  color: #939598;
+  border-bottom: 1px solid green;
+}
+
+.article-plausible {
+  height: 170px;
+  color: #939598;
+  border-bottom: 1px solid yellow;
+}
+
+ol {
   padding-left: 0;
   margin: 0 auto;
   width: 48%;
@@ -84,7 +96,7 @@ li {
 }
 /*vote buttons*/
 
-.swill {
+/*.swill {
   margin: 5px;
   outline: none;
 }
@@ -97,7 +109,7 @@ li {
 .genius {
   margin: 5px;
   outline: none;
-}
+}*/
 .quality {
   color: #6d6e71;
   position: relative;
@@ -148,7 +160,7 @@ li {
 
 @media screen and (max-width: 900px) {
   body {
-    background: yellow;
+    background: white;
   }
 }
 
