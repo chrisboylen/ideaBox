@@ -15,11 +15,21 @@ $saveInputButton.on('click', addIdeaToList);
 
 $('ol').on('click', 'li article .up-vote', function(){
 if ($(this).closest('article').hasClass('article')) {
-$('.quality').text('Quality: Plausible');
+$(this).closest('.quality').text('Quality: Plausible');
 $(this).closest('article').attr('class', 'article-plausible')
 } else { ($(this).closest('article').hasClass('article-plausible')) 
 $('.quality').text('Quality: Genius');
 $(this).closest('article').attr('class', 'article-genius');
+}
+});
+
+$('ol').on('click', 'li article .down-vote', function(){
+if ($(this).closest('article').hasClass('article-genius')) {
+$('.quality').text('Quality: Plausible');
+$(this).closest('article').attr('class', 'article-plausible')
+} else { ($(this).closest('article').hasClass('article-plausible')) 
+$('.quality').text('Quality: swill');
+$(this).closest('article').attr('class', 'article');
 }
 });
 
@@ -58,15 +68,3 @@ Idea.prototype.toHtml = function(){
       </li>
     `);
 };
-
-// $('ol').on('click', 'li article .up-vote', function() {
-//   if ($(this).closest('article').hasClass('article')); {
-//       $(this).closest('article').attr('class', 'article-plausible');
-//     } else if ($(this).closest('article').hasClass('article-plausible')); {
-//       $(this).closest('article').attr('class', 'article-plausible');
-//     } else {
-//       $(this).closest('article').attr('class', 'article-genius');
-//     }
-//   });
-    
-
