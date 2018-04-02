@@ -11,27 +11,36 @@ var $ideaList = $('.idea-list')
 var ideaCounter = 0;
 //event listeners 
 $saveInputButton.on('click', addIdeaToList);
+//idea array
+var $ideas = [];
 
+  $('ol').on('click', 'li article .up-vote', function(){
+  if ($(this).closest('article').hasClass('article')) {
 
-$('ol').on('click', 'li article .up-vote', function(){
-if ($(this).closest('article').hasClass('article')) {
-$(this).closest('.quality').text('Quality: Plausible');
-$(this).closest('article').attr('class', 'article-plausible')
-} else { ($(this).closest('article').hasClass('article-plausible')) 
-$('.quality').text('Quality: Genius');
-$(this).closest('article').attr('class', 'article-genius');
-}
+$(this).closest('.quality').text('article')
+
+  $('.quality').text('Quality: Plausible');
+  $(this).closest('article').attr('class', 'article-plausible')
+  } else { ($(this).closest('article').hasClass('article-plausible')) 
+  $('.quality').text('Quality: Genius');
+  $(this).closest('article').attr('class', 'article-genius');
+  }
+  });
+
+  $('ol').on('click', 'li article .down-vote', function(){
+  if ($(this).closest('article').hasClass('article-genius')) {
+  $('.quality').text('Quality: Plausible');
+  $(this).closest('article').attr('class', 'article-plausible')
+  } else { ($(this).closest('article').hasClass('article-plausible')) 
+  $('.quality').text('Quality: swill');
+  $(this).closest('article').attr('class', 'article');
+  }
+  });
+
+$('ol').on('click', 'li article .delete-button', function(){
+  $(this).closest('article').remove()
 });
 
-$('ol').on('click', 'li article .down-vote', function(){
-if ($(this).closest('article').hasClass('article-genius')) {
-$('.quality').text('Quality: Plausible');
-$(this).closest('article').attr('class', 'article-plausible')
-} else { ($(this).closest('article').hasClass('article-plausible')) 
-$('.quality').text('Quality: swill');
-$(this).closest('article').attr('class', 'article');
-}
-});
 
 //functions
 function clearForm(){
@@ -45,13 +54,17 @@ function Idea(title, body, id) {
   this.id = id
 }
 
+
+
 function addIdeaToList(e) {
+  e.preventDefault();
   ideaCounter++
   var newIdea = new Idea($titleInput.val(), $bodyInput.val(), ideaCounter)
-  e.preventDefault();
+  $ideas.push(new Idea($titleInput.val(), $bodyInput.val(), ideaCounter))
   $("ol").prepend(newIdea.toHtml());
   clearForm();
   console.log(newIdea)
+
 }
 
 Idea.prototype.toHtml = function(){
@@ -59,8 +72,8 @@ Idea.prototype.toHtml = function(){
     <li id="${this.id}" class="${this.id}">
         <article class="article">
           <button class='delete-button'></button>
-          <h1 class="title">${this.title}</h1>
-          <p class="body">${this.body}</p>
+          <h1 class="title" contenteditable="true">${this.title}</h1>
+          <p class="body" contenteditable="true">${this.body}</p>
           <button id="up" class="up-vote swill"></button>
           <button id="down" class="down-vote swill"></button>
           <p class="quality"><span class="quality-serif">quality:</span> swill</p>
