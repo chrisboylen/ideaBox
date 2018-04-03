@@ -54,18 +54,23 @@ function Idea(title, body, id) {
   this.id = id
 }
 
-
-
 function addIdeaToList(e) {
   e.preventDefault();
   ideaCounter++
   var newIdea = new Idea($titleInput.val(), $bodyInput.val(), ideaCounter)
   $ideas.push(new Idea($titleInput.val(), $bodyInput.val(), ideaCounter))
   $("ol").prepend(newIdea.toHtml());
+  toLocalStorage(newIdea);
   clearForm();
-  console.log(newIdea)
-
 }
+
+function toLocalStorage(newIdea) {
+  var objectToStore = newIdea;
+  var stringifiedObject = JSON.stringify(objectToStore);
+  console.log(stringifiedObject)
+  localStorage.setItem("newIdea", stringifiedObject);
+};
+
 
 Idea.prototype.toHtml = function(){
  return (`
