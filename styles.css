@@ -1,5 +1,6 @@
 * {
 box-sizing: border-box;
+outline: none;
 }
 
 body {
@@ -117,6 +118,7 @@ li {
   left: 85px;
 }
 .up-vote {
+  outline: none;
   background-image: url("images/upvote.svg");
   background-repeat: no-repeat;
   background-position: center; 
@@ -126,10 +128,12 @@ li {
   }
 
 .up-vote:hover {
+  outline: none;
   background-image: url("images/upvote-hover.svg");
   }
 
 .down-vote {
+  outline: none;
   background-image: url("images/downvote.svg");
   background-repeat: no-repeat;
   background-position: center; 
@@ -139,10 +143,12 @@ li {
 }
 
 .down-vote:hover {
+  outline: none;
   background-image: url("images/downvote-hover.svg");
 }
 
 .delete-button {
+  outline: none;
   position: relative;
   left: 95%;
   top: 47px;
@@ -155,13 +161,29 @@ li {
 }
 
 .delete-button:hover {
+  outline: none;
   background-image: url("images/delete-hover.svg");
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 768px) {
   body {
-    background: white;
+
   }
+  fieldset {
+  width: 80%;
+}
+
+ol {
+  width: 75%;
+}
+
+.body-input {
+  height: 100px;
+}
+
+.body-input::placeholder {
+  margin-top: 0;
+}
 }
 
 
