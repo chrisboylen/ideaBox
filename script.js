@@ -41,8 +41,7 @@ $('ol').on('click', 'li article .delete-button', function() {
 });
 
 
-$(this).on('load', function(e) {
-    e.preventDefault();
+$(this).on('load', function() {
     var retrievedObject = localStorage.getItem('newIdea');
     var parsedObject = JSON.parse(retrievedObject);
     parsedObject.forEach(function(obj){
@@ -50,7 +49,7 @@ $(this).on('load', function(e) {
         toHtml(obj);
     });
 });
-
+ 
 
 function clearForm() {
     $titleInput.val('');
