@@ -15,10 +15,14 @@ $saveInputButton.on('click', addIdeaToList);
 var $ideas = [];;
 var work = $ideas.val;
 
-$(this).on('load', function($ideas) {
-    fromLocalStorage($ideas);
-    console.log($ideas.val)
-    $("ol").prepend($ideas.toHtml());
+
+
+
+//this function not working//
+$(this).on('load', function() {
+    fromLocalStorage();
+    // console.log(parsedObject)
+    // $("ol").prepend(parsedObject.toHtml());
 });
 
 
@@ -61,7 +65,7 @@ function Idea(title, body, id) {
     this.title = title,
         this.body = body,
         this.id = id
-        this.quality = 'swill' || 'plausible' || 'genius'
+        this.quality = 'swill' || 'plausible' || 'geni'
 };
 
 function addIdeaToList(e) {
@@ -81,10 +85,10 @@ function toLocalStorage() {
     localStorage.setItem("newIdea", stringifiedObject);
 };
 
-function fromLocalStorage($ideas) {
+function fromLocalStorage() {
     var retrievedObject = localStorage.getItem('newIdea');
     var parsedObject = JSON.parse(retrievedObject);
-    console.log(parsedObject);
+    return parsedObject;
 };
 
 Idea.prototype.toHtml = function() {
