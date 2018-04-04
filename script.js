@@ -50,7 +50,6 @@ $(this).on('load', function() {
     });
 });
  
- 
 
 function clearForm() {
     $titleInput.val('');
