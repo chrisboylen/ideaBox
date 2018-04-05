@@ -12,26 +12,24 @@ var $ideaList = $('.idea-list');
 $saveInputButton.on('click', addIdeaToList);
 var $ideas = [];
 
-
 $('ol').on('click', 'li article .up-vote', function() {
     if ($(this).closest('article').hasClass('article')) {
-        $(this).closest('.quality').text('article')
-        $('.quality').text('Quality: Plausible');
-        $(this).closest('article').attr('class', 'article-plausible')
+        $('.q').text('Plausible');
+        $(this).closest('article').attr(this.q, 'article-plausible')
     } else {
         ($(this).closest('article').hasClass('article-plausible'))
-        $('.quality').text('Quality: Genius');
+        $('.q').text('Genius');
         $(this).closest('article').attr('class', 'article-genius');
     }
 });
 
 $('ol').on('click', 'li article .down-vote', function() {
     if ($(this).closest('article').hasClass('article-genius')) {
-        $('.quality').text('Quality: Plausible');
+        $('.q').text('Plausible');
         $(this).closest('article').attr('class', 'article-plausible')
     } else {
         ($(this).closest('article').hasClass('article-plausible'))
-        $('.quality').text('Quality: swill');
+        $('.q').text('swill');
         $(this).closest('article').attr('class', 'article');
     }
 });
@@ -44,12 +42,10 @@ $('ol').on('click', 'li article .delete-button', function() {
 $(this).on('load', function() {
     var retrievedObject = localStorage.getItem('newIdea');
     var parsedObject = JSON.parse(retrievedObject);
-    parsedObject.forEach(function(obj){
-        console.log('working');
+    parsedObject.forEach(function(obj) {
         toHtml(obj);
     });
 });
- 
 
 function clearForm() {
     $titleInput.val('');
@@ -58,9 +54,9 @@ function clearForm() {
 
 function Idea(title, body, id, quality) {
     this.title = title,
-        this.body = body,
-        this.id = id
-        this.quality = quality || 'swill'
+    this.body = body,
+    this.id = id,
+    this.quality = quality || 'swill'
 };
 
 function addIdeaToList(e) {
@@ -78,13 +74,7 @@ function toLocalStorage() {
     localStorage.setItem("newIdea", stringifiedObject);
 };
 
-// function fromLocalStorage() {
-//     var retrievedObject = localStorage.getItem('newIdea');
-//     var parsedObject = JSON.parse(retrievedObject);
-// }
-
-
-function toHtml(newIdea){
+function toHtml(newIdea) {
     $("ol").prepend(`
       <li id="${newIdea.id}">
         <article class="article">
@@ -93,8 +83,7 @@ function toHtml(newIdea){
           <p class="body" contenteditable="true">${newIdea.body}</p>
           <button id="up" class="up-vote swill"></button>
           <button id="down" class="down-vote swill"></button>
-          <p class="quality"><span class="quality-serif">quality:</span>${newIdea.quality}</p>
+          <p class="quality"><span class="quality-serif">quality:</span> <span class="q">${newIdea.quality}</span></p>
         </article>
-      </li>`
-      );
+      </li>`);
 };
