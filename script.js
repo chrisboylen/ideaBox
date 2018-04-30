@@ -67,7 +67,7 @@ function Idea(title, body, id, quality) {
   this.title = title,
   this.body = body,
   this.id = id,
-  this.quality = 'swill'
+  this.quality = quality || 'swill'
 };
 
 function addIdeaToList(e) {
