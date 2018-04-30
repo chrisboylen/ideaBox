@@ -24,7 +24,7 @@ function searchIdeas() {
 }
 
 function upQuality() {
-  let quality = ['shitty', 'meh', 'hell yeah']
+  let quality = ['swill', 'plausible', 'genius']
   let thisIdea = getIdeaFromStorage(localStorage.key('id'));
   let q = quality.indexOf(thisIdea.quality);
   if (q < 2) {
@@ -36,7 +36,7 @@ function upQuality() {
 }
 
 function downQuality() {
-  let quality = ['shitty', 'meh', 'hell yeah']
+  let quality = ['swill', 'plausible', 'genius']
   let thisIdea = getIdeaFromStorage(localStorage.key('id'));
   let fuck = this.closest('article')
   let q = quality.indexOf(thisIdea.quality);
@@ -78,7 +78,7 @@ function Idea(title, body, id, quality) {
   this.title = title,
   this.body = body,
   this.id = id,
-  this.quality = 'meh'
+  this.quality = 'swill'
 };
 
 function addIdeaToList(e) {
